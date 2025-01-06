@@ -8,6 +8,7 @@ export default function SignUpForm() {
         initialValues: {
             firstName: '',
             lastName: '',
+            age: '',
             email: '',
             password: '',
             confirmPassword: ''
@@ -19,6 +20,9 @@ export default function SignUpForm() {
             lastName: yup.string()
             .required('Le nom est requis')
             .matches(/^[A-Za-z]+$/, 'Le nom doit contenir que des lettres'),
+            age: yup.number()
+            .required('L\'âge est requis')
+            .min(18, 'L\'âge doit être supérieur ou égal à 18'),
             email: yup.string().email('Adresse email invalide').required('L\'adresse email est requise'),
             password: yup.string()
             .required('Le mot de passe est requis')
@@ -44,7 +48,7 @@ export default function SignUpForm() {
                 onBlur = {formik.handleBlur}
                 value = {formik.values.firstName}
                 />
-            {formik.touched.firstName && formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
+            {formik.touched.firstName && formik.errors.firstName ? <div className = "error-firstName">{formik.errors.firstName}</div> : null}
             <label htmlFor="lastName">Nom</label>
             <input
                 type="text"
@@ -54,7 +58,17 @@ export default function SignUpForm() {
                 onBlur={formik.handleBlur}
                 value={formik.values.lastName}
             />
-            {formik.touched.lastName && formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
+            {formik.touched.lastName && formik.errors.lastName ? <div className="error-lastName">{formik.errors.lastName}</div> : null}
+            <label htmlFor="age">Âge</label>
+            <input
+                type="number"
+                id="age"
+                name="age"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.age}
+            />
+            {formik.touched.age && formik.errors.age ? <div className="error-message">{formik.errors.age}</div> : null}
             <label htmlFor="email">Email</label>
             <input
                 type="email"
@@ -64,7 +78,7 @@ export default function SignUpForm() {
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
             />
-            {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
+            {formik.touched.email && formik.errors.email ? <div className="error-email">{formik.errors.email}</div> : null}
             <label htmlFor="password">Mot de passe</label>
             <input
                 type="password"
@@ -74,7 +88,7 @@ export default function SignUpForm() {
                 onBlur={formik.handleBlur}
                 value={formik.values.password}
             />
-            {formik.touched.password && formik.errors.password ? <div>{formik.errors.password}</div> : null}
+            {formik.touched.password && formik.errors.password ? <div className="error-password">{formik.errors.password}</div> : null}
             <label htmlFor="confirmPassword">Confirmer le mot de passe</label>
             <input
                 type="password"
@@ -89,3 +103,5 @@ export default function SignUpForm() {
             </form>
     )
 }
+
+

@@ -16,7 +16,7 @@ label {
 
 }
 input[name="text"],
-input[name="text"],
+input[name="age"],
 input[type="email"],
 input[type="text"],
 input[type="password"] {
@@ -38,3 +38,44 @@ button {
     border-radius: 10px;
     cursor: pointer;
 }
+
+input:focus {
+    outline: none;
+    border-color: #585687;
+}
+
+input.error {
+    border-color: red;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.error-firstName {
+    color: rgb(216, 97, 0);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.error-lastName {
+    color: rgb(116, 52, 0);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.error-email {
+    color: rgb(19, 0, 188);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.error-password {
+    color: rgb(0, 188, 188);
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}   
+
